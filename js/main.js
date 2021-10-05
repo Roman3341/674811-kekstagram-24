@@ -10,6 +10,8 @@ getRandomIntInclusive(1, 10);
 
 //Функция для проверки максимальной длины строки.
 function getStringLength (string, maxLength) {
-  const stringLength = string < maxLength ? true : false;
+  const stringLength = string.length < maxLength ? true : false;
   return stringLength;
 }
+
+getStringLength ('Привет!', 10);
