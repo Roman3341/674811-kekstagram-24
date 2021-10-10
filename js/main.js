@@ -5,7 +5,6 @@ function getRandomIntInclusive(min, max) {
   max = Math.floor(max);
   if (max < min) {
     [min,max] = [max, min];
-    console.log(max);
   }
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
@@ -14,8 +13,7 @@ getRandomIntInclusive(10, 1);
 
 //Функция для проверки максимальной длины строки.
 function getStringLength (string, maxLength) {
-  const stringLength = string.length < maxLength ? true : false;
-  return stringLength;
+  return string.length < maxLength;
 }
 
 getStringLength ('Привет!', 10);
