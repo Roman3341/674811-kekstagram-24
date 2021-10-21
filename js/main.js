@@ -1,3 +1,4 @@
+/* eslint-disable id-length */
 //Источник https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Math/random
 //Функция, возвращающая случайное целое число из переданного диапазона включительно.
 function getRandomInt(min, max) {
@@ -44,7 +45,7 @@ const DESCRIPTION_WORDS = [
   'африка',
   'дыня',
   'богородица',
-  'шланг'
+  'шланг',
 ];
 
 const COMMENT_NAMES = [
@@ -57,7 +58,7 @@ const COMMENT_NAMES = [
   'Вячеслав',
   'Ирина',
   'Анастасия',
-  'Светлана'
+  'Светлана',
 ];
 
 const COMMENT_MESSAGE = [
@@ -69,30 +70,32 @@ const COMMENT_MESSAGE = [
   'Лица у людей на фотке перекошены, как будто их избивают. Как можно было поймать такой неудачный момент?!',
 ];
 
-//пустой массив для комментариев
-const commentsMany = [];
-
-//цикл создания 25ти фото
-for (i = 1; i <= 25; i++) {
+//объект комментария
+const createComment = function (photoId, commentId) {
+  return {
+    id: photoId * 10 + commentId,
+    avatar: `img/avatar-${getRandomInt(0, 6)}.jpg`,
+    message: COMMENT_MESSAGE[Math.floor(Math.random() * COMMENT_MESSAGE.length)],
+    name: COMMENT_NAMES[Math.floor(Math.random() * COMMENT_NAMES.length)],
+  };
+};
+const createPhoto = (id) => {
+  const comments = [];
   //цикл генерирования массива с комментариями
   for (let j = getRandomInt(0, 10); j <= 10; j++) {
-    const comment = {
-      id: getRandomInt(1, 1000),
-      avatar: 'img/avatar-' + getRandomInt(0, 6) + '.jpg',
-      message: COMMENT_MESSAGE[Math.floor(Math.random() * COMMENT_MESSAGE.length)],
-      name: COMMENT_NAMES[Math.floor(Math.random() * COMMENT_NAMES.length)]
-    }
-    commentsMany.push(comment);
-  };
-  //функция создания одного фото
-  const createPhoto = () => {
-    //вызов создания фото
-    return {
-      id: i,
-      url: 'photos/' + i + '.jpg',
-      description: DESCRIPTION_WORDS[Math.floor(Math.random() * DESCRIPTION_WORDS.length)],
-      likes: getRandomInt(15, 250),
-      comments: commentsMany
-    }
+    comments.push(createComment(id, j));
   }
+  return {
+    id: id,
+    url: `photos/${id}.jpg`,
+    description: DESCRIPTION_WORDS[Math.floor(Math.random() * DESCRIPTION_WORDS.length)],
+    likes: getRandomInt(15, 250),
+    commentValue: comments,
+  };
+};
+//цикл создания 25ти фото
+const photos = [];
+for (let i = 1; i <= 25; i++) {
+  photos.push(createPhoto(i));
 }
+console.log(photos);
