@@ -9,6 +9,12 @@ function getRandomInt(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
-getRandomInt(10, 1);
+//Функция для проверки максимальной длины строки.
+function getStringLength(string, maxLength) {
+  return string.length < maxLength;
+}
 
+getStringLength('Привет!', 10);
+
+export {getStringLength};
 export {getRandomInt};

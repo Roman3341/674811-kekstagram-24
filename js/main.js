@@ -1,3 +1,6 @@
 /* eslint-disable id-length */
-import  './create-25-photo-massive';
-import { photos } from './create-25-photo-massive';
+import './data.js';
+import './utils.js';
+import {createPhotoMassive} from './data.js';
+
+createPhotoMassive();
