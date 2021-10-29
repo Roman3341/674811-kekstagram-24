@@ -1,3 +1,4 @@
+/* eslint-disable id-length */
 import {
   getRandomInt
 } from './utils.js';
