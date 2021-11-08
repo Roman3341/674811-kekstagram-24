@@ -1,5 +1,8 @@
 import {
-  createPhotoMassive
+  createPhotoArray
 } from './data.js';
-import './create-picture.js';
-createPhotoMassive();
+import {
+  createPictures
+} from'./create-picture.js';
+createPhotoArray();
+createPictures();
