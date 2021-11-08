@@ -87,4 +87,10 @@ const createPhotoMassive = function () {
   return photos;
 };
 
-export {createPhotoMassive};
+const createdPhotos = createPhotoMassive();
+
+export {
+  createPhotoMassive,
+  createdPhotos
+};
+
