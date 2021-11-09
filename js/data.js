@@ -79,7 +79,7 @@ const createPhoto = (id) => {
   };
 };
 //функция создания 25ти фото
-const createPhotoMassive = function () {
+const createPhotoArray = function () {
   const photos = [];
   for (let i = 1; i <= 25; i++) {
     photos.push(createPhoto(i));
@@ -87,4 +87,7 @@ const createPhotoMassive = function () {
   return photos;
 };
 
-export {createPhotoMassive};
+export {
+  createPhotoArray
+};
+

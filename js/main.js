@@ -1,3 +1,10 @@
-import {createPhotoMassive} from './data.js';
+import {
+  createPhotoArray
+} from './data.js';
 
-createPhotoMassive();
+import {
+  createPictures
+} from './create-picture.js';
+
+const createdPhotos = createPhotoArray();
+createPictures(createdPhotos);
