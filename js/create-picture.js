@@ -1,13 +1,9 @@
-import {
-  createPhotoArray
-} from './data.js';
-const createPictures = function () {
-  const createdPhotos = createPhotoArray();
+const createPictures = function (pictureObjects) {
   const pictures = document.querySelector('.pictures');
   const templatePicture = document.querySelector('#picture').content;
   const template = templatePicture.querySelector('a');
   const fragment = document.createDocumentFragment();
-  createdPhotos.forEach((item) => {
+  pictureObjects.forEach((item) => {
     const element = template.cloneNode(true);
     element.querySelector('img').src = item.url;
     element.querySelector('.picture__likes').textContent = item.likes;
