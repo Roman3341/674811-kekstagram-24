@@ -14,7 +14,8 @@ createPictures(createdPhotos);
 
 const uploadForm = document.querySelector('.img-upload__form');
 closeUploadForm();
-uploadForm.addEventListener('submit', () => {
-  hashtagCheck();
-  commentCheck();
+uploadForm.addEventListener('submit', (evt) => {
+  if(hashtagCheck() !== true || commentCheck() !== true ) {
+    evt.preventDefault();
+  }
 });

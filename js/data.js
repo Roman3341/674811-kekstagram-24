@@ -1,4 +1,3 @@
-/* eslint-disable id-length */
 import {
   getRandomInt
 } from './utils.js';
@@ -54,6 +53,9 @@ const COMMENT_MESSAGE = [
   'Лица у людей на фотке перекошены, как будто их избивают. Как можно было поймать такой неудачный момент?!',
 ];
 
+const MAX_HASHTAGS = 5;
+const MAX_COMMENT_LENGTH = 140;
+
 //объект комментария
 const createComment = function (photoId, commentId) {
   return {
@@ -88,6 +90,6 @@ const createPhotoArray = function () {
 };
 
 export {
-  createPhotoArray
+  createPhotoArray, MAX_COMMENT_LENGTH, MAX_HASHTAGS
 };
 

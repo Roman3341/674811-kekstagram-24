@@ -1,3 +1,8 @@
+import {
+  MAX_COMMENT_LENGTH,
+  MAX_HASHTAGS
+} from './data.js';
+
 const uploadInput = document.querySelector('.img-upload__input');
 uploadInput.addEventListener('change', () => {
   document.querySelector('.img-upload__overlay').classList.remove('hidden');
@@ -17,19 +22,20 @@ const isEscapeKey = (evt) => evt.key === 'Escape';
 const hashtagCheck = function () {
   const hashtagText = hashtag.value;
   const space = ' ';
-  const hashtagsArray = hashtagText.split(space); //Проблема - не создается массив
+  const hashtagsArray = hashtagText.split(space);
+  const set = new Set(hashtagsArray);
   const hashtagRegular = /^#[A-Za-zА-Яа-яЁё0-9]{1,19}$/;
   document.querySelector('.img-upload__form').addEventListener('keydown', (evt) => {
     if (isEscapeKey(evt)) {
       evt.stopPropagation();
     }
   });
-  if (hashtagsArray.length < 5) {
-    hashtagsArray.forEach((item) => {
-      if (hashtagRegular.test(item)) {
-        const set = new Set(hashtagsArray);
-        if (set.size < hashtagsArray.length) {
-          return hashtag;
+
+  if (hashtagsArray.length < MAX_HASHTAGS) {
+    hashtagsArray.forEach((element) => {
+      if (hashtagRegular.test(element)) {
+        if (set.size >= hashtagsArray.length) {
+          return true;
         } else {
           return hashtag.setCustomValidity('Введён повторяющийся хэштэг!');
         }
@@ -42,14 +48,14 @@ const hashtagCheck = function () {
   }
 };
 
-const commentCheck = function(comment) {
-  comment = document.querySelector('.text__description');
+const commentCheck = function () {
+  const comment = document.querySelector('.text__description');
   const commentText = document.querySelector('.text__description').value;
-  if (commentText < 140 ) {
-    return commentText;
-  } else {
-    return comment.setCustomValidity('Комментарий слишком длинный');
-  }
+  return commentText.length < MAX_COMMENT_LENGTH ? true : comment.setCustomValidity('Комментарий слишком длинный');
 };
 
-export {closeUploadForm, commentCheck, hashtagCheck};
+export {
+  closeUploadForm,
+  commentCheck,
+  hashtagCheck
+};
